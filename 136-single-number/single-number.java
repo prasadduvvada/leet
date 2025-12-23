@@ -1,7 +1,7 @@
 class Solution {
     public int singleNumber(int[] nums) {
      int result = 0;
-     Arrays.sort(nums);
+    /// Arrays.sort(nums);
         for (int num : nums) {
             result ^= num;
         }
