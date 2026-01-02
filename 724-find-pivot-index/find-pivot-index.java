@@ -1,9 +1,9 @@
 class Solution {
     public int pivotIndex(int[] nums) {
-        int totalSum = Arrays.stream(nums).sum();
+        int totalSum = 0;//Arrays.stream(nums).sum();
         int leftSum = 0;
         
-        //for (int x : nums) totalSum += x;
+        for (int x : nums) totalSum += x;
         
         for (int i = 0; i < nums.length; i++) {
             if (leftSum == totalSum - leftSum - nums[i]) {
