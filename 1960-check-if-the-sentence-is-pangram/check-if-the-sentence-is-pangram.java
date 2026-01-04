@@ -4,8 +4,8 @@ class Solution {
         for(int i = 0 ; i<sentence.length() ; i++){
             hs.add(sentence.charAt(i));
         }
-         boolean check = hs.size() == 26;
-    return check;
+       //  boolean check = hs.size() == 26;
+    return hs.size() == 26;
     }
 
 }
