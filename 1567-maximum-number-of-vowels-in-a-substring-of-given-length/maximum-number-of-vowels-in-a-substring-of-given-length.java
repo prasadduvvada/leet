@@ -11,6 +11,7 @@ class Solution {
         }
      }
     max = Math.max(count,max);
+    if (max ==k) return max;
 }
    return max;
 }
