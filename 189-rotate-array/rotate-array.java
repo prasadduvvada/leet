@@ -1,7 +1,7 @@
 class Solution {
     public void rotate(int[] nums, int k) {
         int n = nums.length;
-        k = k % n; // Step 1: Handle cases where k > array length
+       k = k % n; // Step 1: Handle cases where k > array length
 
         // Step 2: Reverse the whole array
         reverse(nums, 0, n - 1);
