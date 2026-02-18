@@ -1,39 +1,35 @@
 class Solution {
-    public boolean search(int[] nums, int target) {
-        int low = 0;
-        int high = nums.length - 1;
+    public boolean search(int[] nums, int target) { 
+        return recursive_search(0, nums.length - 1, target, nums);
+    }
 
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
+    public boolean recursive_search(int low, int high, int target, int[] nums) {
+        // Base Case: Range is exhausted
+        if (low > high) return false;
 
-            if (nums[mid] == target) return true;
+        int mid = low + (high - low) / 2;
+        if (nums[mid] == target) return true;
 
-            // Handle the duplicate case
-            if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
-                low++;
-                high--;
-                continue;
+        // Handle the duplicate case: shrink the search space and try again
+        if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
+            return recursive_search(low + 1, high - 1, target, nums);
+        }
+
+        // Left side is sorted
+        if (nums[low] <= nums[mid]) {
+            if (nums[low] <= target && target < nums[mid]) {
+                return recursive_search(low, mid - 1, target, nums);
+            } else {
+                return recursive_search(mid + 1, high, target, nums);
             }
-
-            // Left side is sorted
-            if (nums[low] <= nums[mid]) {
-                // Check if target is within the sorted left range
-                if (nums[low] <= target && target < nums[mid]) {
-                    high = mid - 1;
-                } else {
-                    low = mid + 1;
-                }
-            } 
-            // Right side is sorted
-            else {
-                // Check if target is within the sorted right range
-                if (nums[mid] < target && target <= nums[high]) {
-                    low = mid + 1;
-                } else {
-                    high = mid - 1;
-                }
+        } 
+        // Right side is sorted
+        else {
+            if (nums[mid] < target && target <= nums[high]) {
+                return recursive_search(mid + 1, high, target, nums);
+            } else {
+                return recursive_search(low, mid - 1, target, nums);
             }
         }
-        return false;
     }
 }
