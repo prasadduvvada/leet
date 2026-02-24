@@ -19,3 +19,6 @@ class Solution {
         return result;
     }
 }
+
+// Formula: (count of left elements * current) - leftSum 
+            //          + rightSum - (count of right elements * current)
