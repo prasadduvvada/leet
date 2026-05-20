@@ -1,17 +1,17 @@
 class Solution {
     public int rob(int[] nums) {
-    int n = nums.length;
-     int dp[] = new int[nums.length+1];
-     Arrays.fill(dp,-1);
-    return f(n-1,dp,nums);
+    int perv = nums[0];
+    int pervs2 = 0;
+    int robbery =0;
+    int skip =0;
+    for(int i =1; i<nums.length; i++){
+        robbery = nums[i];
+        if(i>1) {robbery += pervs2;}
+        skip = 0 + perv;
+       int curi = Math.max(robbery,skip);
+        pervs2 = perv;
+        perv = curi;
     }
- 
-    public int f(int n,int[]dp,int[]nums){
-        if(n<0) return 0;
-        if(n==0) return nums[n];
-        if(dp[n] != -1) return dp[n];
-        int robberyodd = nums[n] + f(n-2,dp,nums);
-        int robbereven = f(n-1,dp,nums);
-        return dp[n] = Math.max(robberyodd,robbereven);
-    }
+    return perv;
+}
 }
