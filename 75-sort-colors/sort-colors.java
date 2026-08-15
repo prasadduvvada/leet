@@ -6,19 +6,20 @@ public void sortColors(int[] nums) {
 
     while (mid <= high) {
         if (nums[mid] == 0) {
-            int temp = nums[low];
-            nums[low] = nums[mid];
-            nums[mid] = temp;
+            swap(nums,low, mid);
             low++;
             mid++;
         } else if (nums[mid] == 1) {
             mid++;
         } else if (nums[mid] == 2) {
-            int temp = nums[high];
-            nums[high] = nums[mid];
-            nums[mid] = temp;
+            swap(nums,high,mid);
             high--;
         }
     }
+}
+public void swap(int[] nums,int x,int y){
+    int temp =nums[x];
+    nums[x] = nums[y];
+    nums[y] = temp;
 }
 }
